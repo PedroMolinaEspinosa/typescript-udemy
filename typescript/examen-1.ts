@@ -4,25 +4,27 @@
     const nombre = 'Ricardo Tapia';
     const edad = 23;
 
-    let PERSONAJE = {
-        nombre: nombre,
-        edad: edad
+    const PERSONAJE = {
+        nombre,
+        edad
     };
 
 
     // Cree una interfaz que sirva para validar el siguiente objeto
-    var batman: SuperHeroe = {
+    interface SuperHeroe {
+        nombre: string;
+        artesMarciales: string[];
+    }
+
+    const batman: SuperHeroe = {
         nombre: 'Bruno Díaz',
         artesMarciales: ['Karate', 'Aikido', 'Wing Chun', 'Jiu-Jitsu']
     }
 
-    interface SuperHeroe {
-        nombre: string;
-        artesMarciales: string[]
-    }
+
 
     // Convertir esta funcion a una funcion de flecha
-    const resultadoDoble = (a: number, b: number) => (a + b) * 2;
+    const resultadoDoble = (a: number, b: number): number => (a + b) * 2;
 
 
     // Función con parametros obligatorios, opcionales y por defecto
@@ -30,7 +32,7 @@
     //       PODER  = opcional
     //       ARMA   = por defecto = 'arco'
     function getAvenger(nombre: string, arma: string = 'arco', poder?: string) {
-        var mensaje;
+        let mensaje;
         if (poder) {
             mensaje = nombre + ' tiene el poder de: ' + poder + ' y un arma: ' + arma;
         } else {
@@ -55,9 +57,8 @@
             public base: number,
             public altura: number
         ) { }
-        calcularArea() {
-            return this.base * this.altura;
-        }
+        calcularArea = (): number => this.base * this.altura;
+
     }
     let rect1: Rectangulo = new Rectangulo(3, 6);
     console.log(rect1.calcularArea());
